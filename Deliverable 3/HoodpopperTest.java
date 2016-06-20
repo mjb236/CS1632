@@ -292,12 +292,10 @@ public class HoodpopperTest {
 			//click the parse button
 			WebElement btn = driver.findElement(By.xpath("//input[@value='Compile']"));
 			btn.click();
-			System.out.println("After click.");
 			
 			//check the abstract syntax tree for spaces
 			WebElement code = driver.findElement(By.xpath("/html/body/p[1]"));
 			String results = code.getText();
-			System.out.println(results);
 			assertTrue(results.contains("putobject 4"));
 		} catch (NoSuchElementException nseex) {
 			fail();
