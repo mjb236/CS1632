@@ -11,12 +11,10 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 public class HoodpopperTest {
 
 	static WebDriver driver = new HtmlUnitDriver();
-	//static WebDriver driver = new FirefoxDriver();
 	String code1 = "a = 3\nb = 4\nc = a * b\nputs \"c = \" + c";
 	String code2 = "a=3\nb=4\nc=a/b";
 	
-	//begin each test with a fresh Hoodpopper page with the code
-	//I will be testing in the code entry text area
+	//begin each test with a fresh Hoodpopper page
 	@Before
 	public void setUp() throws Exception {
 		driver.get("http://lit-bayou-7912.herokuapp.com/");
