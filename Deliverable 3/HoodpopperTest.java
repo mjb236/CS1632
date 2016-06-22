@@ -167,7 +167,7 @@ public class HoodpopperTest {
 			WebElement btn = driver.findElement(By.xpath("//input[@value='Parse']"));
 			btn.click();
 			
-			//check the abstract syntax tree for spaces
+			//check the abstract syntax tree for multiplication operator
 			WebElement code = driver.findElement(By.xpath("/html/body/p[2]"));
 			String results = code.getText();
 			assertTrue(results.contains("-*"));	
@@ -191,7 +191,7 @@ public class HoodpopperTest {
 			WebElement btn = driver.findElement(By.xpath("//input[@value='Parse']"));
 			btn.click();
 			
-			//check the abstract syntax tree for spaces
+			//check the abstract syntax tree for puts operator
 			WebElement code = driver.findElement(By.xpath("/html/body/p[2]"));
 			String results = code.getText();
 			assertTrue(results.contains("-@ident\n---puts"));
@@ -221,7 +221,7 @@ public class HoodpopperTest {
 			WebElement btn = driver.findElement(By.xpath("//input[@value='Compile']"));
 			btn.click();
 			
-			//check the abstract syntax tree for spaces
+			//check the abstract syntax tree for putstring
 			WebElement code = driver.findElement(By.xpath("/html/body/p[1]"));
 			String results = code.getText();
 			assertTrue(results.contains("putstring"));
@@ -245,7 +245,7 @@ public class HoodpopperTest {
 			WebElement btn = driver.findElement(By.xpath("//input[@value='Compile']"));
 			btn.click();
 			
-			//check the abstract syntax tree for spaces
+			//check the abstract syntax tree for opt_mult
 			WebElement code = driver.findElement(By.xpath("/html/body/p[1]"));
 			String results = code.getText();
 			assertTrue(results.contains("opt_mult"));
@@ -255,9 +255,9 @@ public class HoodpopperTest {
 	}
 	
 	//Given that I am on the Hoodpopper site
-	//And I the code I type in contains an integer value of 4 assignment to a variable
+	//And I the code I type in does not contain the puts operator
 	//When I use the compile button to compile the code
-	//Then I should find the putstring operator in the YARV code.
+	//Then I should not find the putstring operator in the YARV code.
 	@Test
 	public void compilePutsOperatorMissing() {
 		try {
@@ -279,9 +279,9 @@ public class HoodpopperTest {
 	}
 	
 	//Given that I am on the Hoodpopper site
-	//And I the code I type in does not contain the puts operator
+	//And I the code I type in contains an integer value of 4 assignment to a variable
 	//When I use the compile button to compile the code
-	//Then I should not find the putobject operator, followed by 4, in the YARV code.
+	//Then I should find the putobject operator, followed by 4, in the YARV code.
 	@Test
 	public void compileIntAssignmentOperator() {
 		try {
@@ -293,7 +293,7 @@ public class HoodpopperTest {
 			WebElement btn = driver.findElement(By.xpath("//input[@value='Compile']"));
 			btn.click();
 			
-			//check the abstract syntax tree for spaces
+			//check the abstract syntax tree for putobject
 			WebElement code = driver.findElement(By.xpath("/html/body/p[1]"));
 			String results = code.getText();
 			assertTrue(results.contains("putobject 4"));
