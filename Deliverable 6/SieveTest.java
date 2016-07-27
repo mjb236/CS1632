@@ -57,4 +57,33 @@ public class SieveTest {
 		//no value returned since there is no prime
 		assertTrue(toReturn.length == 0);
 	}
+	
+	//Tests to ensure changes to the calculateMax function are
+	//working properly. Exceptions should be thrown in two cases.
+	//When there are no arguments and when the argument is less than 0.
+	@Test
+	public void convertMaxTestNegative() {
+		String[] args = {"-100"};
+		
+		try {
+			Sieve.calculateMax(args);
+			fail();
+		}
+		catch (IllegalArgumentException iae) {
+			//test passes
+		}
+	}
+	
+	@Test
+	public void convertMaxTestNoArgs() {
+		String[] args = new String[0];
+		
+		try {
+			Sieve.calculateMax(args);
+			fail();
+		}
+		catch (IllegalArgumentException iae) {
+			//test passes
+		}
+	}
 }
