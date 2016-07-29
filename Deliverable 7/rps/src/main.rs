@@ -103,12 +103,33 @@ fn main() {
 		// get the player's choice
 		let player_choice = get_player_choice();
 		match player_choice {
-			Choice::Invalid => continue, 	//next loop iteration
+			Choice::Invalid => {
+				println!("Invalid choice.");
+				continue;										//next loop iteration
+			}, 	
 			Choice::Quit => break,				//exit game
 			_ => {}												//valid choice
 		}
 
+		// get cpu choice
 		let cpu_choice = get_cpu_choice();
+		
+		// print out the choices
+		match player_choice {
+			Choice::Rock => println!("Player chose: Rock"),
+			Choice::Paper => println!("Player chose: Paper"),
+			Choice::Scissors => println!("Player chose: Scissors"),
+			_ => {}
+		}
+		match cpu_choice {
+			Choice::Rock => println!("Opponent chose: Rock"),
+			Choice::Paper => println!("Opponent chose: Paper"),
+			Choice::Scissors => println!("Opponent chose: Scissors"),
+			_ => {}
+		}
+
+
+
 		match compare(player_choice, cpu_choice) {
 			Outcome::PlayerWin => add_player_win(&mut stats),
 			Outcome::PlayerLoss => add_player_loss(&mut stats),
